@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<style>
+      .full{
+      background: url("../../../../static/css/images/fil2.jpg") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      }
+</style>
+<html class="full" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Order History</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../../../../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../../static/css/past.css" rel="stylesheet">
+  </head>
+  <body>
+   <!-- Navigation -->
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Order History</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
+        </ul>
+      </div>
+    </nav>
+  <!-- Cards -->
+  {% for i in range(0,data|length) %}
+  <style>
+  .status-of-order-{{i}}{
+    color : {{status[i]}};
+  }
+  </style>
+    <div class="media block-update-card">
+      <a class="pull-left" href="#">
+        <img class="media-object update-card-MDimentions" src="{{data[i][6]}}">
+      </a>
+      <div class="media-body update-card-body">
+        <h4 class="media-heading"><br><strong>Book Name : </strong>{{data[i][2]}}<br></h4>
+        <p><strong>Author Name : </strong>{{data[i][3]}}<br>
+        <strong>Publisher Name : </strong>{{data[i][10]}}<br>
+        <strong>Price : </strong>{{data[i][9]}}<br>
+        <strong>Status : </strong><span class = "status-of-order-{{i}}"><strong>{{data[i][8]}}</strong></span><br>
+        </p>
+      </div>
+    </div>
+  {% endfor %}
+  </body>
+</html>

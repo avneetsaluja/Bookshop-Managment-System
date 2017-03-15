@@ -1,0 +1,43 @@
+#page-wrapper{
+	background-color: BlanchedAlmond;
+}
+.order-order{
+  width: 90px;
+  height: 30px;
+  border: 5px solid rgba(0, 0, 0, .10);
+  background: Chocolate;
+  position: absolute;
+  left : 950px;
+  top : 85px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 15px;
+  padding-top: 10px;
+}
+.log-out{
+  width: 70px;
+  height: 30px;
+  border: 5px solid rgba(0, 0, 0, .10);
+  background: Chocolate;
+  position: absolute;
+  left : 1070px;
+  top : 85px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 15px;
+  padding-top: 10px;
+}
+#click-orders{
+	display:block;
+	height: 100%;
+	width: 100%;
+	text-decoration: none;
+	color: BlanchedAlmond;
+}
+#log-out{
+  display:block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  color: BlanchedAlmond;
+}

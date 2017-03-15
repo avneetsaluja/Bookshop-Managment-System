@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<style>
+        .full {
+        background: url("../../../../static/css/images/bg.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        }
+    </style>
+<html class="full" lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../../../static/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../../static/css/card.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../../../../static/css/the-big-picture.css" rel="stylesheet">
+</head>
+<body>
+
+	<!-- Navigation cum Footer -->
+    <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation"><br>
+    </nav>
+    <!-- Card -->
+    <div class="row row-margin-bottom">
+    {% for row in data %}
+            <div class="col-md-5 no-padding lib-item" data-category="view">
+                <div class="lib-panel" id = "CARD">
+                    <div class="row box-shadow">
+                        <div class="col-md-6">
+                            <img class="lib-img-show" src="{{row[6]}}">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="lib-row lib-header">
+                                <strong>{{row[2]}}</strong></h1><br>
+                                <div class="lib-header-seperator"></div>
+                            </div>
+                            <div class="lib-row lib-desc">
+                                {{row[5]}}<br><br>
+                                <strong>Author : </strong>{{row[3]}}<br>
+								<strong>Publisher : </strong>{{row[10]}}<br>
+								<strong>Published : </strong>{{row[9]}}<br>
+								<strong>Binding: </strong>{{row[4]}}<br>
+								<strong>Price: </strong>{{row[8]}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+                                {% block content %}
+                                    {% if name == "Guest" %}
+                                        <a class = "btn btn-sm btn-primary" href = {{url_for('login',flag = flag)}} role="button">BUY</a>
+                                    {% elif stock == 0 %}
+                                        <a class = "btn btn-sm btn-primary" href = {{url_for('func',username = name,bid = b_id, pid = p_id,flag = 1)}} role="button">BUY</a>
+                                    {% else %}
+                                        <a class = "btn btn-sm btn-primary" href = {{url_for('pay',username = name,bid = b_id,pid= p_id)}} role="button">BUY</a>
+                                    {% endif %}
+                               {% endblock content %}
+{% endfor %}
+{% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-danger" role="alert">
+            <strong>{{message}}</strong>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+</body>
+</html>
