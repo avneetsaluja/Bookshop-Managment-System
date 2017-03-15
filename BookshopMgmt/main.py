@@ -13,10 +13,10 @@ def login(flag):
 		name = request.form['Username']		# entered username
 		password = request.form['Password']	# enterred password
 		c,conn = connection()
-		data = c.execute("select username,password from user where username = (%s)",str(name))		# searches the database for record corresponding to the unique username
+		data = c.execute("select username,password from user where username = (%s)",str(name))		# searches the database for a record corresponding to the unique username
 		if data:
 			data = c.fetchone()[1]
-			if data!=str(password):		# in case of non mathing of password, the below message is shown on the page
+			if data!=str(password):		# in case of non matching of password, the below message is shown on the page
 				flash("Invalid Credentials, try again!!")
 				return redirect(url_for('login',flag = "0"))
 			return redirect(url_for('myHome',username = str(name)))
@@ -31,7 +31,7 @@ def signup():
 	else:
 		name = request.form['Username']
 		pwd = request.form['Password']
-		repwd = request.form['Confirm Password']	# signup alowed only when passwords match, username, email-id are new
+		repwd = request.form['Confirm Password']	# signup alowed only when passwords match and username, email-id are new
 		email = request.form['Email']
 		addr = request.form['Address']
 		if pwd != repwd :
@@ -52,13 +52,13 @@ def signup():
 			return render_template('frontPage.html',flag = "0")
 
 		
-@app.route('/home/<username>')		# directs the user to the home page on click of home button
+@app.route('/home/<username>')		# directs the user to the home page
 def myHome(username):
 	flash(username)		# name of user displayed on the main page
 	return render_template('home.html')
 
 
-@app.route('/pay/<username>/<bid>/<pid>', methods = ['GET','POST'])
+@app.route('/pay/<username>/<bid>/<pid>', methods = ['GET','POST']) 
 def pay(username,bid,pid):
 	if request.method == 'GET':
 		c,conn = connection()
