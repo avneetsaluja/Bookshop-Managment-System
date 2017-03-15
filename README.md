@@ -7,4 +7,4 @@ Team Members- Anupam Kumar, Atreya Kala, Avneet Saluja
 
 Instructions-
   1)Run main.py on terminal
-  2)Enter url http://localhost/login/0
+  2)Enter url http://localhost:5000/login/0
